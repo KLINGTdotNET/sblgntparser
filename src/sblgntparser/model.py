@@ -67,3 +67,21 @@ class Word():
 
     def position(self):
         return self._position
+
+    def neighbors(self):
+        p = self._position
+        if 0 == self._position:
+            return {
+                'left': None,
+                'right': self._sentence.words()[p+1]
+            }
+        elif 0 < self._position < len(self._sentence) - 1:
+            return {
+                'left':  self._sentence.words()[p-1],
+                'right': self._sentence.words()[p+1]
+            }
+        else:
+            return {
+                'left': self._sentence.words()[p-1],
+                'right': None
+            }
