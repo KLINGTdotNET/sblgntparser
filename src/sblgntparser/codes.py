@@ -87,5 +87,6 @@ def gender(code):
     return g.get(code)
 
 def degree(code):
+    # adjective
     # no codes known
     return None

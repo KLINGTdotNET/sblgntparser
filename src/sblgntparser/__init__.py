@@ -1,11 +1,11 @@
 '''
-    grarticle
-    =========
+    sblgntparser
+    ============
 
-    A python package for the analysis of grammatical particles.
+    A python package that parses Greek New Testament files from the Society of Biblical Literature.
 
     :license: MIT, see LICENSE file
 '''
 __version__ = '0.1-dev'
 
-from grarticle import codes, sblgnt
+from sblgntparser import codes, parser

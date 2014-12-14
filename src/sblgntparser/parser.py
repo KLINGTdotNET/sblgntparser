@@ -3,12 +3,15 @@ import re
 import logging
 log = logging.getLogger(__name__)
 
-import grarticle
+from sblgntparser import codes as sblgntcodes
 
 '''
     A python module that parses texts in the format the SBLGNT uses
 
     http://morphgnt.org/sblgnt/
+
+    todo:
+        - refactor classes to seperate module, like model.py
 '''
 
 class Text():
@@ -38,6 +41,9 @@ class Text():
         else:
             log.warn('Word position not inside text! "{}":"{}"'.format(pos, word.views['text']))
 
+class Sentence():
+    pass
+
 class Word():
     def __init__(self, word):
         self.textpos = word['text_position']
@@ -58,6 +64,7 @@ def parse(filepath):
             log.exception(e)
         else:
             if raw_text:
+                # check for punctuation and make the punctuation list more general to work with old greek and modern texts
                 parsed_words = [ parse_line(index, line) for index, line in enumerate(raw_text) ]
                 return Text(parsed_words)
             else:
@@ -105,14 +112,14 @@ def parse_parsing_code(part):
         # see https://github.com/morphgnt/tischendorf/blob/master/code/rptag.py
         # person, tense, voice, mood, case, number, gender, degree
         codes = [ _ for _ in part ]
-        person = grarticle.codes.person(codes[0])
-        tense = grarticle.codes.tense(codes[1])
-        voice = grarticle.codes.voice(codes[2])
-        mood = grarticle.codes.mood(codes[3])
-        case = grarticle.codes.case(codes[4])
-        number = grarticle.codes.number(codes[5])
-        gender = grarticle.codes.gender(codes[6])
-        degree = grarticle.codes.degree(codes[7])
+        person = sblgntcodes.person(codes[0])
+        tense = sblgntcodes.tense(codes[1])
+        voice = sblgntcodes.voice(codes[2])
+        mood = sblgntcodes.mood(codes[3])
+        case = sblgntcodes.case(codes[4])
+        number = sblgntcodes.number(codes[5])
+        gender = sblgntcodes.gender(codes[6])
+        degree = sblgntcodes.degree(codes[7])
         return {
             'person': person,
             'tense': tense,
