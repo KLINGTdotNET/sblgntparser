@@ -4,6 +4,7 @@ import logging
 log = logging.getLogger(__name__)
 
 from sblgntparser import codes as sblgntcodes
+from sblgntparser import model
 
 '''
     A python module that parses texts in the format the SBLGNT uses
@@ -14,45 +15,11 @@ from sblgntparser import codes as sblgntcodes
         - refactor classes to seperate module, like model.py
 '''
 
-class Text():
-    def __init__(self, words):
-        self.words = words
-
-    def len(self):
-        return len(self.words)
-
-    def find(self, sought):
-        for word in self.words:
-            if sought in word.views['norm']:
-                return word
-
-    def read(self, view='text'):
-        for word in self.words:
-            yield word.views[view]
-
-    def neighbors(self, word):
-        pos = word.textpos
-        if pos > 0 and pos < self.len():
-            return [ self.words[pos-1], self.words[pos+1]]
-        elif pos == 0:
-            return [ self.words[1] ]
-        elif pos == self.len():
-            return [ self.words[self.len()-1] ]
-        else:
-            log.warn('Word position not inside text! "{}":"{}"'.format(pos, word.views['text']))
-
-class Sentence():
-    pass
-
-class Word():
-    def __init__(self, word):
-        self.textpos = word['text_position']
-        self.book = word['book']
-        self.chapter = word['chapter']
-        self.verse = word['verse']
-        self.part_of_speech = word['part_of_speech']
-        self.codes = word['codes']
-        self.views = word['views']
+punctuation = {
+    'sentence': [ '.', ';' ],   # period, question mark
+    'subsentence': [ ',', '·' ] # comma, semicolon
+}
+# period, comma, question mark, semicolon
 
 def parse(filepath):
     if os.path.exists(filepath):
@@ -64,29 +31,36 @@ def parse(filepath):
             log.exception(e)
         else:
             if raw_text:
-                # check for punctuation and make the punctuation list more general to work with old greek and modern texts
-                parsed_words = [ parse_line(index, line) for index, line in enumerate(raw_text) ]
-                return Text(parsed_words)
+                sentences = []
+                sentence = model.Sentence([])
+                for index, line in enumerate(raw_text):
+                    word = parse_line(index, line, sentence, len(sentence))
+                    sentence.append(word)
+                    for marker in punctuation['sentence']:
+                        if marker in word.views['text']:
+                            sentences.append(sentence)
+                            sentence = model.Sentence([])
+                return model.Text(sentences)
             else:
                 log.error('"{}" is empty!'.format(filepath))
     else:
         log.warn('Could not find file "{}"!'.format(filepath))
 
-def parse_line(index, line):
+def parse_line(index, line, sentence, position):
     parts = line.split()
     if len(parts) is not 7:
         log.warn('Malformed line: "{}"'.format(line))
     else:
         book, chapter, verse = parse_index(parts[0])
-        parse_part_of_speech(parts[1])
+        pos = parse_part_of_speech(parts[1])
         codes = parse_parsing_code(parts[2])
         text, word, normalised, lemma = tuple(parts[3:])
-        return Word({
+        return model.Word({
             'text_position': index,
             'book': int(book),
             'chapter': int(chapter),
             'verse': int(verse),
-            'part_of_speech': None,
+            'part_of_speech': pos,
             'codes': codes,
             'views': {
                 'text': text,
@@ -94,7 +68,8 @@ def parse_line(index, line):
                 'norm': normalised,
                 'lemma': lemma
                 }
-            })
+            },
+            sentence, position)
 
 def parse_index(part):
     matcher = re.compile(r'(\d{2})(\d{2})(\d{2})')
@@ -102,8 +77,7 @@ def parse_index(part):
     return res.groups()
 
 def parse_part_of_speech(part):
-    # todo, because the codes are currently unknown
-    pass
+    return sblgntcodes.part_of_speech(part)
 
 def parse_parsing_code(part):
     if len(part) is not 8:
