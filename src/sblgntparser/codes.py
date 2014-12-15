@@ -90,102 +90,18 @@ def degree(code):
 
 def part_of_speech(code):
     wordtype = Code({
-        'a': 'adjective',
-        'c': 'conjunction',
-        'd': 'adverb',
-        'n': 'noun',
-        'p': 'pronoun',
-        'r': 'preposition',
-        's': 'suffix',
-        't': 'particle',
-        'v': 'verb',
-        'x': 'exclamation',
-        'i': 'interjection'
+        'a-': 'adjective',
+        'c-': 'conjunction',
+        'd-': 'adverb',
+        'n-': 'noun',
+        'p-': 'preposition',
+        'ra': 'article',
+        'rd': 'demonstrative',
+        'ri': 'interrogative',
+        'rp': 'personal pronoun',
+        'rr': 'relative pronoun',
+        'v-': 'verb',
+        'x-': 'exclamation',
+        'i-': 'interjection'
         }, 'word-type')
-    wt = wordtype.get(code[0])
-    if wt:
-        # sblgnt only has 2 position codes for part of speech
-        if wt == 'adjective':
-            adjective = Code({
-                'c': 'cardinal number',
-                'o': 'ordinal number'
-                }, 'adjective')
-            return [wt, adjective.get(code[1])]
-        elif wt == 'conjunction':
-            conjunction = Code({
-                'v': 'vav consecutive'
-                }, 'conjunction')
-            return [wt, conjunction.get(code[1])]
-        elif wt == 'adverb':
-            return [wt]
-        elif wt == 'noun':
-            noun = Code({
-                # type
-                'c': 'common',
-                'g': 'gentilic',
-                'p': 'proper name'
-                }, 'noun')
-            return [wt, noun.get(code[1])]
-        elif wt == 'pronoun':
-            pronoun = Code({
-                'd': 'demonstrative',
-                'f': 'indefinite',
-                'i': 'interrogative',
-                'p': 'personal',
-                'r': 'relative'
-                }, 'pronoun')
-            return [wt, pronoun.get(code[1])]
-        elif wt == 'preposition':
-            preposition = Code({
-                'i': 'independent',
-                'b': 'bet inseparable',
-                'k': 'kaf inseparable',
-                'l': 'lamed inseparable',
-                'm': 'mem inseparable',
-                # seperate?
-                'a': 'article',
-                'd': 'demonstrative',
-                'i': 'interrogative',
-                'p': 'personal pronoun',
-                'r': 'relative pronoun'
-                }, 'preposition')
-            return [wt, preposition.get(code[1])]
-        elif wt == 'suffix':
-            suffix = Code({
-                'd': 'directional he',
-                'h': 'paragogic he',
-                'n': 'paragogic num',
-                'p': 'pronomial'
-                }, 'suffix')
-            return [wt, suffix.get(code[1])]
-        elif wt == 'particle':
-            particle = Code({
-                'a': 'affirmation',
-                'd': 'definite article',
-                'e': 'exhortation',
-                'i': 'interrogative',
-                'j': 'interjectioin',
-                'm': 'demonstrative',
-                'n': 'negative',
-                'o': 'direct object marker',
-                'r': 'relative',
-                's': 'prefixed relateive (shin)'
-                }, 'particle')
-            return [wt, particle.get(code[1])]
-        elif wt == 'verb':
-            verb = Code({
-                'p': 'perfect',
-                'q': 'sequential perfect',
-                'i': 'imperfect',
-                'w': 'sequential imperfect',
-                'a': 'infinitive absolute',
-                'c': 'infinitive construct',
-                'h': 'cohortative',
-                'v': 'imperative',
-                'j': 'jussive',
-                'r': 'participle active',
-                's': 'participle passive'
-                }, 'verb')
-            return [wt, verb.get(code[1])]
-        else:
-            return [wt]
+    return wordtype.get(code)
