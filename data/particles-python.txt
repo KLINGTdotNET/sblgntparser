@@ -1,4 +1,4 @@
-* Simple Particles
+* simple
 ** ἀλλά
 + ἀλλά
 + ἀλλὰ
@@ -63,7 +63,7 @@
 ** τοι
 + τοι
 + τοί
-* Combinations written together as one word
+* combinations
 ** μέντοι
 + μέντοι
 + μένθ᾽
@@ -94,7 +94,7 @@
 + δήπουγε
 ** δήπουθεν
 + δήπουθεν
-* Negation
+* negation
 ** οὐ
 + οὐ
 + οὐκ
