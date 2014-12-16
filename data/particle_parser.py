@@ -7,7 +7,7 @@ import logging
 log = logging.getLogger(__name__)
 
 def main():
-    p = Path('particles-python_project.txt')
+    p = Path('particles.txt')
     if p.exists() and  p.is_file():
         parse(str(p))
 
