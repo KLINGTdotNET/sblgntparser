@@ -29,6 +29,7 @@ def parse_lines(lines):
     data = {}
     category = ''
     particle = ''
+    simple_particle_lemma = []
     for line in lines:
         parts = line.split()
         if parts[0] == '*':
@@ -46,13 +47,6 @@ def parse_lines(lines):
                     log.warn('Particle "{}" already contained in category: "{}"'.format(parts[1], category))
             else:
                 log.warn('particle without previous category specification: "{}"'.format(parts[1]))
-        elif parts[0] == '+':
-            if category in data and particle in data[category]:
-                data[category][particle].append(parts[1])
-            else:
-                log.warn('particle variation without previous category specification: "{}"'.format(parts[0]))
-        else:
-            log.error('malformed line: "{}"'.format(line))
     pp.pprint(data)
 
 if __name__ == '__main__':
