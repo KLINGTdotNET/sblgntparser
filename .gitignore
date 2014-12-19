@@ -5,3 +5,4 @@ build/
 dist/
 sblgntparser.egg-info/
 setuptools*.zip
+.pypirc
