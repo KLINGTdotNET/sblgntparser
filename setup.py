@@ -42,7 +42,7 @@ setup(
     # metadata
     author = "Andreas Linz",
     author_email = "klingt.net@gmail.com",
-    description = "This packages provides a parser and tools for the SBL Greek New Testament format.",
+    description = "This packages provides a python 3 parser and tools for the SBL Greek New Testament format.",
     license = "MIT",
     keywords = "sblgnt parser",
     url = "https://github.com/KLINGTdotNET/sblgntparser",
