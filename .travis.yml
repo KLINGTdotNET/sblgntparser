@@ -9,6 +9,7 @@ python:
   - "pypy3"
 # command to install dependencies
 install:
+  - "easy_install -U setuptools"
   - "pip install -r requirements.txt"
   - "pip install -e ."
 # command to run tests
