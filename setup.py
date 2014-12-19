@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+
+import sys
+from setuptools import setup
+from setuptools.command.test import test as TestCommand
+
+class PyTest(TestCommand):
+    user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
+
+    def initialize_options(self):
+        TestCommand.initialize_options(self)
+        self.pytest_args = []
+
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        #import here, cause outside the eggs aren't loaded
+        import pytest
+        errno = pytest.main(self.pytest_args)
+        sys.exit(errno)
+
+# http://pythonhosted.org/setuptools/setuptools.html#developer-s-guide
+setup(
+    name = "sblgntparser",
+    version = "0.1",
+    packages = ["sblgntparser"],
+
+    install_requires = [],
+    package_data = {},
+
+    tests_require = ['pytest'],
+    cmdclass = {
+        'test': PyTest,
+    },
+
+    # metadata
+    author = "Andreas Linz",
+    author_email = "klingt.net@gmail.com",
+    description = "This packages provides a parser and tools for the SBL Greek New Testament format.",
+    license = "MIT",
+    keywords = "sblgnt parser",
+    url = "https://github.com/KLINGTdotNET/sblgntparser",
+)
