@@ -25,6 +25,10 @@ class PyTest(TestCommand):
         errno = pytest.main(self.pytest_args)
         sys.exit(errno)
 
+def load_readme():
+    with open('README.rst') as f:
+        return f.read()
+
 # http://pythonhosted.org/setuptools/setuptools.html#developer-s-guide
 setup(
     name = "sblgntparser",
@@ -43,8 +47,9 @@ setup(
     author = "Andreas Linz",
     author_email = "klingt.net@gmail.com",
     description = "This packages provides a python 3 parser and tools for the SBL Greek New Testament format.",
+    long_description = load_readme(),
     license = "MIT",
     keywords = "sblgnt parser",
     url = "https://github.com/KLINGTdotNET/sblgntparser",
-    package_url = "https://github.com/KLINGTdotNET/sblgntparser/archive/0.1.tar.gz",
+    download_url = "https://github.com/KLINGTdotNET/sblgntparser/archive/0.1.tar.gz",
 )

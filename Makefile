@@ -12,3 +12,7 @@ test: init
 
 clean:
 	./clean.sh
+
+pypi: init test build
+	pandoc --from=markdown --to=rst README.md -o README.rst
+	python setup.py bdist_wheel upload -r test
