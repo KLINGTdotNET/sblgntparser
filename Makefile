@@ -15,4 +15,4 @@ clean:
 
 pypi: init test build
 	pandoc --from=markdown --to=rst README.md -o README.rst
-	python setup.py bdist_wheel upload -r test
+	python setup.py bdist_wheel upload -r pypi
