@@ -46,4 +46,5 @@ setup(
     license = "MIT",
     keywords = "sblgnt parser",
     url = "https://github.com/KLINGTdotNET/sblgntparser",
+    package_url = "https://github.com/KLINGTdotNET/sblgntparser/archive/0.1.tar.gz",
 )
