@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+import ez_setup
+ez_setup.use_setuptools()
+
 import sys
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
