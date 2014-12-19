@@ -9,7 +9,7 @@ python:
   - "pypy3"
 # command to install dependencies
 install:
-  - "pip install -e ."
-  - "pip install -r requirements.txt"
+  - "make"
+  - "pip install . "
 # command to run tests
 script: make test

@@ -1,12 +1,12 @@
-all: init test build
+all: build
 
-build:
+build: init
 	@python setup.py bdist_wheel
 
 init:
 	@pip install -r requirements.txt
 
-test:
+test: init
 	@python setup.py test
 
 clean:
