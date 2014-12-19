@@ -34,7 +34,7 @@ def test_text():
                     else:
                         assert n['left'] is not None and n['right'] is not None
             assert text is not None
-            hits = text.find('ἐν')
+            hits = text.find(u'ἐν')
             assert hits is not None and len(hits) == 8
 
 def __get_testfiles():
