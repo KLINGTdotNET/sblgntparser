@@ -24,6 +24,6 @@ Currently only Python 3.4+ is supported because the package uses the new [pathli
     - `cd sblgntparser`
     - `make && pip install --user`
 
-## Usage Exmaples
+## Usage Examples
 
 - will follow
