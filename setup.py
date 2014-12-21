@@ -36,7 +36,9 @@ setup(
     packages = ["sblgntparser"],
 
     install_requires = [],
-    package_data = {},
+    package_data = {
+        'sblgntparser': ['*.json']
+    },
 
     tests_require = ['pytest'],
     cmdclass = {
