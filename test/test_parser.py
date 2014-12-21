@@ -1,12 +1,13 @@
-import pytest
-import logging
-log = logging.getLogger(__name__)
 import sys
 from pathlib import Path
 parent = str(Path(__file__).absolute().parent.parent)
 sys.path.append(parent)
 
-from sblgntparser import parser
+from sblgntparser import parser, tools
+
+import pytest
+import logging
+log = logging.getLogger(__name__)
 
 def test_parse():
     for testpath in __get_testfiles():
