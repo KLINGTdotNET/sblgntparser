@@ -82,10 +82,10 @@ def parts():
     Returns the dictionary with the part as key and the contained book as indices.
     '''
     parts = {
-        'Canonical gospels': [ _ for _  in range(1, 5) ],
-        'Apostolic history': [ 5 ],
-        'Pauline epistels': [ _ for _ in range(6, 19) ],
-        'General epistels': [ _ for _ in range(19, 26) ],
+        'Canon': [ _ for _  in range(1, 5) ],
+        'Apostle': [ 5 ],
+        'Paul': [ _ for _ in range(6, 19) ],
+        'General': [ _ for _ in range(19, 26) ],
         'Apocalypse': [ 27 ]
     }
     return parts
