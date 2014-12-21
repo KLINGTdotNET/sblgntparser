@@ -1,3 +1,6 @@
+import json
+import os
+
 import logging
 log = logging.getLogger(__name__)
 
@@ -19,3 +22,21 @@ def filelist(folderpath, ext=None, flat=True):
             return [ f for f in path.iterdir() if f.is_file() and f.suffix in ext ]
     else:
         log.warn('Nothing found in "{}"'.format(str(folderpath)))
+
+def particles(category=None):
+    '''
+    Returns a dict containing old greek particles grouped by category.
+    '''
+    filepath = os.path.join(os.path.dirname(__file__), './particles.json')
+    with open(filepath) as f:
+        try:
+            particles = json.load(f)
+        except ValueError as e:
+            log.error('Bad json format in "{}"'.format(filepath))
+        else:
+            if category:
+                if category in particles:
+                    return particles[category]
+                else:
+                    log.warn('Category "{}" not contained in particle dictionary!'.format(category))
+            return particles
