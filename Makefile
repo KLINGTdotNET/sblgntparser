@@ -7,7 +7,7 @@ init:
 	@easy_install --upgrade setuptools
 	@pip install -r requirements.txt
 
-test: init
+test:
 	@python setup.py test
 
 clean:
