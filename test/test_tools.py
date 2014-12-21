@@ -15,3 +15,8 @@ def test_tools():
     assert len(particles.keys()) is 3
     particles = tools.particles(category='negation')
     assert len(particles) is 4
+    assert tools.bookname(17) is 'Titus'
+    for part, indices in tools.parts().items():
+        assert part is not None
+        for index in indices:
+            assert tools.bookname(index) is not None

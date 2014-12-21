@@ -23,6 +23,8 @@ def test_text():
     for fp in filepaths:
         if '84-2Jn-morphgnt.txt' in str(fp):
             text = parser.parse(str(fp))
+            assert text is not None
+            assert text.bookindex() is 24
             for word in text.words():
                 assert str(word) == str(word.sentence().words()[word.position()])
             for sentence in text.sentences():
@@ -34,7 +36,6 @@ def test_text():
                         assert n['right'] is None
                     else:
                         assert n['left'] is not None and n['right'] is not None
-            assert text is not None
             hits = text.find(u'ἐν')
             assert hits is not None and len(hits) == 8
 
