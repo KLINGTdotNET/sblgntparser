@@ -4,7 +4,7 @@ import logging
 log = logging.getLogger(__name__)
 
 from sblgntparser import codes as sblgntcodes
-from sblgntparser import model
+from sblgntparser import model, tools
 
 '''
     A python module that parses texts in the format the SBLGNT uses
@@ -31,16 +31,19 @@ def parse(filepath):
             log.exception(e)
         else:
             if raw_text:
+                bookindex = None
                 sentences = []
                 sentence = model.Sentence([])
                 for index, line in enumerate(raw_text):
                     word = parse_line(index, line, sentence, len(sentence))
+                    if not bookindex:
+                        bookindex = word.book
                     sentence.append(word)
                     for marker in punctuation['sentence']:
                         if marker in word.views['text']:
                             sentences.append(sentence)
                             sentence = model.Sentence([])
-                return model.Text(sentences)
+                return model.Text(sentences, tools.bookname(bookindex), bookindex)
             else:
                 log.error('"{}" is empty!'.format(filepath))
     else:

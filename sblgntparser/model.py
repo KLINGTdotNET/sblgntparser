@@ -1,6 +1,10 @@
 class Text():
-    def __init__(self, sentences):
+    def __init__(self, sentences, author, bookindex):
         self._sentences = sentences
+        self._bookindex = bookindex
+
+    def bookindex(self):
+        return self._bookindex
 
     def sentences(self):
         for sentence in self._sentences:
