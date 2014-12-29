@@ -1,8 +1,3 @@
-import sys
-from pathlib import Path
-parent = str(Path(__file__).absolute().parent.parent)
-sys.path.append(parent)
-
 from sblgntparser import parser, tools
 
 import pytest
