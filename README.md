@@ -8,9 +8,8 @@ This package provides a parser and tools for the [SBL Greek New Testament](https
 
 ## Compatibility
 
-- python 2.7
 - python 3.3, 3.4
-- pypy2, pypy3
+- pypy3
 
 ## Installation
 
