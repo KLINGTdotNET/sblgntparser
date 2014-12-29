@@ -32,7 +32,7 @@ def load_readme():
 # http://pythonhosted.org/setuptools/setuptools.html#developer-s-guide
 setup(
     name = "sblgntparser",
-    version = "0.4",
+    version = "0.4.1",
     packages = ["sblgntparser"],
 
     install_requires = [],
