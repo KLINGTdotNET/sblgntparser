@@ -36,5 +36,4 @@ def test_text(testfiles, load_textfile):
                     else:
                         assert n['left'] is not None and n['right'] is not None
         hits = text.find(u'καί')
-        # "καί" is in every book
         assert hits is not None and len(hits) > 0
