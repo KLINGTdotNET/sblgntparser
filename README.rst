@@ -3,19 +3,18 @@ SBLGNT Parser
 
 |Build Status|
 
-A python 3 parser for the `SBL Greek New Testament <https://github.com/morphgnt/sblgnt>`__
-------------------------------------------------------------------------------------------
+A python parser for the `SBL Greek New Testament <https://github.com/morphgnt/sblgnt>`__
+----------------------------------------------------------------------------------------
 
 This package provides a parser and tools for the `SBL Greek New
 Testament <https://github.com/morphgnt/sblgnt>`__ format.
 
-Technical Information
----------------------
+Compatibility
+-------------
 
-Currently only Python 3.4+ is supported because the package uses the new
-`pathlib <https://docs.python.org/3/library/pathlib.html>`__. Maybe I
-will change this in order to support all versions of python including
-`pypy <http://pypy.org/>`__.
+-  python 2.7
+-  python 3.3, 3.4
+-  pypy2, pypy3
 
 Installation
 ------------
@@ -43,7 +42,7 @@ via ``pip``
 Usage Examples
 --------------
 
--  will follow
+-  see `github <https://github.com/KLINGTdotNET/dh-project-ws14>`__
 
 .. |Build Status| image:: https://travis-ci.org/KLINGTdotNET/sblgntparser.svg?branch=master
    :target: https://travis-ci.org/KLINGTdotNET/sblgntparser
