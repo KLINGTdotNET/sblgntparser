@@ -17,7 +17,7 @@ from sblgntparser import model, tools
 
 punctuation = {
     'sentence': [ '.', ';' ],   # period, question mark
-    'subsentence': [ ',', '·' ] # comma, semicolon
+    'subsentence': [ ',', u'·' ] # comma, semicolon
 }
 # period, comma, question mark, semicolon
 
