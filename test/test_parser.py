@@ -1,8 +1,3 @@
-# import sys
-# from pathlib import Path
-# parent = str(Path(__file__).absolute().parent.parent)
-# sys.path.append(parent)
-
 from sblgntparser import parser, tools
 
 import pytest
@@ -41,13 +36,3 @@ def test_text(testfiles, load_textfile):
         hits = text.find(u'καί')
         # "καί" is in every book
         assert hits is not None and len(hits) > 0
-
-# def test_sentence(sentence):
-#     for index, word in enumerate(sentence.words()):
-#         n = word.neighbors()
-#         if index == 0:
-#             assert n['left'] is None
-#         elif index == len(sentence) - 1:
-#             assert n['right'] is None
-#         else:
-#             assert n['left'] is not None and n['right'] is not None
