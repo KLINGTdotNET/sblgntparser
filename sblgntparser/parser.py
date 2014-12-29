@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os.path
 import re
 import logging
@@ -16,8 +18,8 @@ from sblgntparser import model, tools
 '''
 
 punctuation = {
-    'sentence': [ u'.', u';' ],   # period, question mark
-    'subsentence': [ u',', u'·' ] # comma, semicolon
+    'sentence': [ '.', ';' ],   # period, question mark
+    'subsentence': [ ',', u'·' ] # comma, semicolon
 }
 # period, comma, question mark, semicolon
 
