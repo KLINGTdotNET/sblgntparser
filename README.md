@@ -2,9 +2,15 @@
 
 [![Build Status](https://travis-ci.org/KLINGTdotNET/sblgntparser.svg?branch=master)](https://travis-ci.org/KLINGTdotNET/sblgntparser)
 
-## A python 3 parser for the [SBL Greek New Testament](https://github.com/morphgnt/sblgnt)
+## A python parser for the [SBL Greek New Testament](https://github.com/morphgnt/sblgnt)
 
 This package provides a parser and tools for the [SBL Greek New Testament](https://github.com/morphgnt/sblgnt) format.
+
+## Compatibility
+
+- python 2.7
+- python 3.3, 3.4
+- pypy2, pypy3
 
 ## Installation
 
