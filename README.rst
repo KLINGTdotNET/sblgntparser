@@ -12,9 +12,8 @@ Testament <https://github.com/morphgnt/sblgnt>`__ format.
 Compatibility
 -------------
 
--  python 2.7
 -  python 3.3, 3.4
--  pypy2, pypy3
+-  pypy3
 
 Installation
 ------------
