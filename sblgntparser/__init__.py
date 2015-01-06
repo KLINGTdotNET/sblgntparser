@@ -6,6 +6,6 @@
 
     :license: MIT, see LICENSE file
 '''
-__version__ = '0.1-dev'
+__version__ = '0.4.2'
 
-from sblgntparser import codes, parser
+from sblgntparser import codes, parser, tools, model
