@@ -16,7 +16,7 @@ def filelist(folderpath, ext=None):
     if not ext:
         ext = []
     if os.path.exists(folderpath) and os.path.isdir(folderpath):
-        return [ os.path.join(folderpath, f) for f in os.listdir(folderpath) if os.path.isfile(f) and os.path.splitext(f)[1] in ext ]
+        return [ os.path.join(folderpath, f) for f in os.listdir(folderpath) if os.path.isfile(os.path.join(folderpath, f)) and os.path.splitext(f)[1] in ext ]
     else:
         log.warn('"{}" does not exist or is not a directory'.format(folderpath))
 
